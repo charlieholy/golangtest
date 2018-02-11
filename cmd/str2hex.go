@@ -12,4 +12,10 @@ func main() {
 	hex.Encode(dst, []byte(src))
 	fmt.Printf("dst=%v\n", dst)
 	fmt.Printf("dst(hex)=%s\n", string(dst))
+
+	//根据解码长度来分配缓存空间
+	dst2 := make([]byte, hex.DecodedLen(len(dst)))
+	hex.Decode(dst2, dst)
+	fmt.Printf("dst2=%v\n", dst2)
+	fmt.Printf("dst2.(string)=%s\n", string(dst2))
 }
